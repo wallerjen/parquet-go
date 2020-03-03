@@ -31,7 +31,8 @@ type ColumnBufferType struct {
 	DataTableNumRows int64
 }
 
-func NewColumnBuffer(pFile source.ParquetFile, footer *parquet.FileMetaData, schemaHandler *schema.SchemaHandler, pathStr string) (*ColumnBufferType, error) {
+func NewColumnBuffer(pFile source.ParquetFile, footer *parquet.FileMetaData, schemaHandler *schema.SchemaHandler,
+	pathStr string) (*ColumnBufferType, error) {
 	newPFile, err := pFile.Open("")
 	if err != nil {
 		return nil, err
@@ -168,7 +169,7 @@ func (self *ColumnBufferType) ReadPageForSkip() (*layout.Page, error) {
 		}
 
 		if page.Header.GetType() == parquet.PageType_DICTIONARY_PAGE {
-			page.GetValueFromRawData(self.SchemaHandler)
+			_ = page.GetValueFromRawData(self.SchemaHandler)
 			self.DictPage = page
 			return page, nil
 		}
