@@ -3140,7 +3140,10 @@ func (p *SchemaElement) Read(iprot thrift.TProtocol) error {
     if err != nil {
       return thrift.PrependError(fmt.Sprintf("%T field %d read error: ", p, fieldId), err)
     }
-    //if fieldTypeId == thrift.STOP { break; }
+    if fieldTypeId == thrift.STOP {
+      println("field type ID is stop")
+    }
+    //{ break; }
     switch fieldId {
     case 1:
       if fieldTypeId == thrift.I32 {
