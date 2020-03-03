@@ -208,7 +208,6 @@ func (self *ParquetReader) ReadByNumber(maxReadNumber int) ([]interface{}, error
 	println("reflect.New(vs.Type): ", res)
 
 	res.Elem().Set(vs)
-	println("res.Elem().Set(vs): ", res.Elem().Set(vs))
 
 	if err = self.Read(res.Interface()); err != nil {
 		return nil, err
