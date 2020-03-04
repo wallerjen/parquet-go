@@ -277,8 +277,8 @@ func (self *ParquetReader) read(dstInterface interface{}, prefixPath string) err
 		go func() {
 			for {
 				select {
-				case <-stopChan:
-					return
+				//case <-stopChan:
+				//	return
 				case pathStr := <-taskChan:
 					cb := self.ColumnBuffers[pathStr]
 					table, _ := cb.ReadRows(int64(num))
