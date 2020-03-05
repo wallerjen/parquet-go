@@ -271,7 +271,7 @@ func (self *ParquetReader) read(dstInterface interface{}, prefixPath string) err
 
 	doneChan := make(chan int, self.NP)
 	taskChan := make(chan string, len(self.ColumnBuffers))
-	//stopChan := make(chan int)
+	stopChan := make(chan int)
 
 	for i := int64(0); i < self.NP; i++ {
 		go func() {
