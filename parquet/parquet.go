@@ -3137,6 +3137,7 @@ func (p *SchemaElement) Read(iprot thrift.TProtocol) error {
   for {
     _, fieldTypeId, fieldId, err := iprot.ReadFieldBegin()
     println("fieldTypeID: ", fieldTypeId)
+    println("fieldID: ", fieldId)
     if err != nil {
       return thrift.PrependError(fmt.Sprintf("%T field %d read error: ", p, fieldId), err)
     }
