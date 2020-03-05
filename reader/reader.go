@@ -203,9 +203,7 @@ func (self *ParquetReader) ReadByNumber(maxReadNumber int) ([]interface{}, error
 	}
 
 	vs := reflect.MakeSlice(reflect.SliceOf(self.ObjType), maxReadNumber, maxReadNumber)
-	println("vs: ", vs)
 	res := reflect.New(vs.Type())
-	println("reflect.New(vs.Type): ", res)
 
 	res.Elem().Set(vs)
 
